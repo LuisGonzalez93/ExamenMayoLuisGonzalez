@@ -12,14 +12,17 @@ import java.io.Serializable;
  * @author Alumno
  */
 public class Habitacion implements Serializable {
+
     private int habitacionNumero;
-    private Madre madre; 
+    private Madre madre;
 
     public Habitacion(int habitacionNumero) {
         this.habitacionNumero = habitacionNumero;
     }
-    
-   
+
+    /**
+     * @return verdadero si la habitacion esta vacia o falso si no
+     */
     public boolean isEmpty() {
         return madre == null;
     }
@@ -36,10 +39,14 @@ public class Habitacion implements Serializable {
         this.habitacionNumero = habitacionNumero;
     }
 
-    public void setMadre(Madre madre) {
+    public void setPaciente(Madre madre) {
         this.madre = madre;
     }
-    
+
+    public void vaciarHabitacion() {
+        madre = null;
+    }
+
     public int bebes() {
         int result = 0;
         if (madre != null) {
@@ -47,6 +54,5 @@ public class Habitacion implements Serializable {
         }
         return result;
     }
-        
-}
 
+}

@@ -13,22 +13,22 @@ import java.util.Iterator;
  * @author Alumno
  */
 public class Madre extends Paciente {
-    private final static int COSTE_POR_DIA = 100;
+    private final static int COSTE_POR_DIA = 100; 
     private ArrayList<Bebe> bebes; 
 
-  
-    public Madre(int id, String nombre, String admission, int room) {
-        super(id, nombre, admission, room, COSTE_POR_DIA);
+    
+    public Madre(int id, String nombre, String admision, int habitacion) {
+        super(id, nombre, admision, habitacion, COSTE_POR_DIA);
         bebes = new ArrayList<>();
     }
     
     @Override
     public int getCosteHospitalizacion() {
-        int outPut = super.getCosteHospitalizacion();
+        int result = super.getCosteHospitalizacion();
         for (Bebe bebe : bebes) {
-            outPut += bebe.getCosteHospitalizacion();
+            result += bebe.getCosteHospitalizacion();
         }
-        return outPut;
+        return result;
     }
     
     public void addBebe(Bebe bebe) {
@@ -67,12 +67,12 @@ public class Madre extends Paciente {
         return bebes.size();
     }
  
-    public boolean tieneBebe(String bebeNombre) {
+    public boolean tieneBebe(String nombreBebe) {
         int i = 0;
         boolean tiene = false;
         while(!tiene && i < bebes.size()) {
             Bebe bebe = bebes.get(i);
-            if (bebe.getNombre().toLowerCase().contains(bebeNombre.toLowerCase())) {
+            if (bebe.getName().toLowerCase().contains(nombreBebe.toLowerCase())) {
                 tiene = true;
             }
             i++;
@@ -80,4 +80,5 @@ public class Madre extends Paciente {
         return tiene;
     }
 }
+
 
